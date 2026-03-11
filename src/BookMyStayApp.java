@@ -1,27 +1,30 @@
+import java.util.Map;
+
 public class BookMyStayApp {
 
     public static void main(String[] args) {
+        System.out.println("Hotel Room Inventory Status\n");
 
-        System.out.println("Hotel Room Initialization\n");
+        // Initialize Inventory and Rooms
+        RoomInventory inventory = new RoomInventory();
+        Map<String, Integer> availability = inventory.getRoomAvailability();
 
+        // Create Room objects to get characteristics (Price/Size)
         Room single = new SingleRoom();
         Room doubleRm = new DoubleRoom();
         Room suite = new SuiteRoom();
 
-        int singleAvail = 5;
-        int doubleAvail = 3;
-        int suiteAvail = 2;
-
-        System.out.println(single.getRoomType());
+        // Displaying data by pulling from the Centralized Inventory
+        System.out.println("Single Room:");
         single.displayRoomDetails();
-        System.out.println("Available: " + singleAvail + "\n");
+        System.out.println("Available Rooms: " + availability.get("Single Room") + "\n");
 
-        System.out.println(doubleRm.getRoomType());
+        System.out.println("Double Room:");
         doubleRm.displayRoomDetails();
-        System.out.println("Available: " + doubleAvail + "\n");
+        System.out.println("Available Rooms: " + availability.get("Double Room") + "\n");
 
-        System.out.println(suite.getRoomType());
+        System.out.println("Suite Room:");
         suite.displayRoomDetails();
-        System.out.println("Available: " + suiteAvail);
+        System.out.println("Available Rooms: " + availability.get("Suite Room"));
     }
 }
